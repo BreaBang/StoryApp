@@ -17,8 +17,12 @@ if(process.env.NODE_ENV === 'development'){
 }
 
 // Handlebars
-app.engine('.hbs', exphbs({defaultLayout: 'main', extname: '.hbs'})); //use the hbs extension
-app.set('view engine', '.hbs'); //setting view engine
+//app.engine('hbs', require('exphbs'));
+app.engine('.hbs', exphbs.engine({defaultLayout: 'main', extname: '.hbs'})); //use the hbs extension - from tutorial add .engine to exphbs to make it work.
+app.set('view engine', 'hbs'); //setting view engine
+
+// Routes 
+app.use('/', require('./routes/index')) //anything that requires a route will go to the /index file to find the correct route. 
 
 const PORT = process.env.PORT || 5000
 
