@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const connectDB = async () => {
     try {//catch errors that occur and try to fix them. 
-        // additional items from no longer needed. 
+        //additional items no longer needed. 
         const conn = await mongoose.connect
         (process.env.MONGO_URI)
         

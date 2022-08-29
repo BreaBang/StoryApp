@@ -1,6 +1,6 @@
 const express = require('express')
 const dotenv = require('dotenv')
-const morgan = require(`morgan`)
+const morgan = require(`morgan`) //for login
 const exphbs = require('express-handlebars')
 const connectDB = require('./config/db')
 
@@ -12,14 +12,18 @@ connectDB()
 const app = express()
 
 // Logging
+// quick conditional to see if we are in the dev. We're going to use morgan in the dev to see what pages are being touched. 
 if(process.env.NODE_ENV === 'development'){
-    app.use(morgan('dev'))
+    app.use(morgan('dev')) //login middleware
 }
 
 // Handlebars
-//app.engine('hbs', require('exphbs'));
-app.engine('.hbs', exphbs.engine({defaultLayout: 'main', extname: '.hbs'})); //use the hbs extension - from tutorial add .engine to exphbs to make it work.
-app.set('view engine', 'hbs'); //setting view engine
+app.engine('.hbs', exphbs.engine({ //use the hbs extension - from tutorial add .engine to exphbs to make it work.
+    defaultLayout: 'main', 
+    extname: '.hbs'
+    })
+)
+app.set('view engine', 'hbs'); //setting view engine to handlebars
 
 // Routes 
 app.use('/', require('./routes/index')) //anything that requires a route will go to the /index file to find the correct route. 
