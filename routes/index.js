@@ -1,16 +1,16 @@
 const express = require('express')
 const router = express.Router()
 
-// @desc Longin/Landing Page
+// @desc Login / Landing Page
 // @route GET /
 router.get('/', (req, res) => {
-    res.sendStatus('login')
+    res.send('login')
 })
 
 // @desc Dashboard
 // @route GET /dashboard
-router.get('/dashboard', (req, res) => {
-    res.sendStatus('dashboard')
+router.get('/dashboard', (req,res) => {
+    res.send('dashboard')
 })
 
 module.exports = router

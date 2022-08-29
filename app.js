@@ -27,6 +27,7 @@ app.set('view engine', 'hbs'); //setting view engine to handlebars
 
 // Routes 
 app.use('/', require('./routes/index')) //anything that requires a route will go to the /index file to find the correct route. 
+app.use('/dashboard', require('./routes/index'))
 
 const PORT = process.env.PORT || 5000
 
