@@ -18,8 +18,8 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    image: { //if no image for a user, there will be a broken image link and it won't look great. Just an FYI. It's not required. . 
-        type: String,
+    image: {
+        type: String //if no image for a user, there will be a broken image link and it won't look great. Just an FYI. It's not required. . 
     },
     createdAt: {
         type: Date,

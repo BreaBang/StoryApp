@@ -18,5 +18,16 @@ router.get(
     }
 )
 
+// @desc Logout User
+// @route /suth/logout
+
+// Passport requires logout functions to be asynch. 
+router.get('/logout', (req, res, next) => [
+    req.logout(function (err) {
+        if (err) {return next(err)}
+        res.redirect('/')
+    })
+])
+
 
 module.exports = router
