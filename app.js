@@ -3,10 +3,15 @@ const express = require('express')
 const dotenv = require('dotenv')
 const morgan = require(`morgan`) //for login
 const exphbs = require('express-handlebars')
+const passport = require('passport')
+const session = require('express-session')
 const connectDB = require('./config/db')
 
 // Load config by calling dotenv and creating an object with the path
 dotenv.config({path: './config/config.env'})
+
+// Passport config
+require('./config/passport')(passport)
 
 connectDB()
 
@@ -25,6 +30,18 @@ app.engine('.hbs', exphbs.engine({ //use the hbs extension - from tutorial add .
     })
 )
 app.set('view engine', 'hbs'); //setting view engine to handlebars
+
+// Session Middleware - must go above passport middleware 
+app.use(
+    session({
+        secret: 'keyboard cat',
+        resave: false, // we won't save a session if nothing was modified. 
+        saveUninitialized: false, //we won't create a session unless something is stored. 
+  }))
+
+// Passport Middleware
+app.use(passport.initialize())
+app.use(passport.session())
 
 // Static Folder named public
 app.use(express.static(path.join(__dirname, 'public'))) //__dirname means go to the root directory, then look for a public folder. 
