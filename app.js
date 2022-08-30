@@ -48,7 +48,7 @@ app.use(express.static(path.join(__dirname, 'public'))) //__dirname means go to 
 
 // Routes 
 app.use('/', require('./routes/index')) //anything that requires a route will go to the /index file to find the correct route. 
-app.use('/dashboard', require('./routes/index'))
+app.use('/auth', require('./routes/auth'))
 
 const PORT = process.env.PORT || 5000
 
