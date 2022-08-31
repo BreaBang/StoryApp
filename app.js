@@ -5,7 +5,9 @@ const morgan = require(`morgan`) //for login
 const exphbs = require('express-handlebars')
 const passport = require('passport')
 const session = require('express-session')
+const MongoStore = require('connect-mongo') //! unlike traversy Media - don't added session here. 
 const connectDB = require('./config/db')
+const { default: mongoose } = require('mongoose')
 
 // Load config by calling dotenv and creating an object with the path
 dotenv.config({path: './config/config.env'})
@@ -37,6 +39,9 @@ app.use(
         secret: 'keyboard cat',
         resave: false, // we won't save a session if nothing was modified. 
         saveUninitialized: false, //we won't create a session unless something is stored. 
+        store: MongoStore.create({
+            mongoUrl: process.env.MONGO_URI //!! Traversy Media Change - instead of using mongoose here, pull in mongo_URI from config.env
+        })
   }))
 
 // Passport Middleware
@@ -49,6 +54,7 @@ app.use(express.static(path.join(__dirname, 'public'))) //__dirname means go to 
 // Routes 
 app.use('/', require('./routes/index')) //anything that requires a route will go to the /index file to find the correct route. 
 app.use('/auth', require('./routes/auth'))
+app.use('/stories', require('./routes/stories'))
 
 const PORT = process.env.PORT || 5000
 
