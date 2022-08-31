@@ -19,6 +19,11 @@ connectDB()
 
 const app = express()
 
+// Body parser
+app.use(express.urlencoded({extended: false }))
+app.use(express.json())
+
+
 // Logging
 // quick conditional to see if we are in the dev. We're going to use morgan in the dev to see what pages are being touched. 
 if(process.env.NODE_ENV === 'development'){
