@@ -31,12 +31,15 @@ if(process.env.NODE_ENV === 'development'){
 }
 
 // Handlebars Helpers - using destructing to pull a bunch of things from the same place
-const {formatDate } = require('./helpers/hbs')
+const {formatDate, stripTags, truncate, editIcon} = require('./helpers/hbs')
 
 // Handlebars
 app.engine('.hbs', exphbs.engine({ //use the hbs extension - from tutorial add .engine to exphbs to make it work.
     helpers: { // sub-object here
         formatDate,
+        stripTags,
+        truncate,
+        editIcon
     },
     defaultLayout: 'main',  //setting main.hbs as our main layout. We should never end up with an unformatted page. 
     extname: '.hbs'
@@ -58,6 +61,14 @@ app.use(
 // Passport Middleware
 app.use(passport.initialize())
 app.use(passport.session())
+
+// Set global var - this is for the edit function / floating icon
+// next = to call the next middleware
+app.use(function (req, res, next) {
+    res.locals.user = req.user || null // This line is why we added "required: true to Story.js User"
+    next()
+
+})
 
 // Static Folder named public
 app.use(express.static(path.join(__dirname, 'public'))) //__dirname means go to the root directory, then look for a public folder. 

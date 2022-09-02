@@ -1,15 +1,17 @@
 <h1>Stories</h1>
 <div class="row">
+    {{! Loop Passing through story objects}}
     {{#each stories}}
-
     <div class="col s12 m4">
         <div class="card">
             <div class="card-image">
                 {{! -- potential change to editIcon --}}
+                {{! Tripple handlebars needed to bring in html tags and render them properly }}
+                {{{editIcon user ../user _id}}} {{! the ../user_id backs us out of the loop to compare logged in user to current user}}
             </div>
             <div class="card-content center-aligned">
                 <h5>{{title}}</h5>
-                <p>{{body}}</p> {{! Will want a helper here to make the body not so long and strip paragraph tags. }}
+                <p>{{stripTags (truncate body 150)}}</p> {{! Will want a helper here to make the body not so long and strip paragraph tags. }}
                 <br>
                 <div class="chip"> {{! Pill shaped thing showing the image and name on stories}}
                     <img src="{{user.image}}" alt="">

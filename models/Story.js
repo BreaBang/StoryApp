@@ -18,6 +18,7 @@ const StorySchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId, //connecting each user's story to the database object associated with that user. 
         ref: 'User',//ref back to user model
+        required: true,  // to make sure the app pairs every story with a user to keep the app from breaking
     },
     
     createdAt: {
