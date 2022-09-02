@@ -26,5 +26,20 @@ router.post('/', ensureAuth, async (req, res) => {  //ensureAuth makes sure they
     }
 })
 
+// @desc Show all stories
+// @route GET /stories/
+router.get('/stories', ensureAuth, async (req, res) => {  //ensureAuth makes sure they are logged in. //asynch is getting the database
+    try{
+        const stories = await Story.find({ status: 'public' }) // to show all public stories we have to find the ones with the STATUS public
+            .populate('user') // grabbing from the user model to fill in the card
+            .sort({ createdAt: 'desc'}) // ability to sort the cards so they are in order of creation date from newest to oldest. 
+            .lean() // lean takes it from a mongoose object and turns it into a plain json object so handlebars can use it. 
+    } catch (err) {
+        console.error(err)
+        res.render('error/500')
+
+    }
+})
+
 
 module.exports = router

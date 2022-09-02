@@ -30,8 +30,14 @@ if(process.env.NODE_ENV === 'development'){
     app.use(morgan('dev')) //login middleware
 }
 
+// Handlebars Helpers - using destructing to pull a bunch of things from the same place
+const {formatDate } = require('./helpers/hbs')
+
 // Handlebars
 app.engine('.hbs', exphbs.engine({ //use the hbs extension - from tutorial add .engine to exphbs to make it work.
+    helpers: { // sub-object here
+        formatDate,
+    },
     defaultLayout: 'main',  //setting main.hbs as our main layout. We should never end up with an unformatted page. 
     extname: '.hbs'
     })
