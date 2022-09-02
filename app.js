@@ -31,7 +31,7 @@ if(process.env.NODE_ENV === 'development'){
 }
 
 // Handlebars Helpers - using destructing to pull a bunch of things from the same place
-const {formatDate, stripTags, truncate, editIcon} = require('./helpers/hbs')
+const {formatDate, stripTags, truncate, editIcon, select} = require('./helpers/hbs')
 
 // Handlebars
 app.engine('.hbs', exphbs.engine({ //use the hbs extension - from tutorial add .engine to exphbs to make it work.
@@ -39,7 +39,8 @@ app.engine('.hbs', exphbs.engine({ //use the hbs extension - from tutorial add .
         formatDate,
         stripTags,
         truncate,
-        editIcon
+        editIcon,
+        select
     },
     defaultLayout: 'main',  //setting main.hbs as our main layout. We should never end up with an unformatted page. 
     extname: '.hbs'

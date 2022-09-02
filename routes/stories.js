@@ -45,5 +45,31 @@ router.get('/', ensureAuth, async (req, res) => {  //ensureAuth makes sure they 
     }
 })
 
+// @desc Show edit page
+// @route GET /stories/edit/:id
+//using findOne makes sure we find the one and get one result back
+//telling the method here to look inside the route, look inside the request and find the parameter of id.
+router.get('/edit/:id', ensureAuth, async (req, res) => {
+    try {
+      const story = await Story.findOne({
+        _id: req.params.id,
+      }).lean()
+  
+      if (!story) {
+        return res.render('error/404')
+      }
+
+      if (story.user != req.user.id) {
+        res.redirect('/stories') // on the off chance that someone tries to edit a story they don't own, they'll get redirected. It's double insurance because theoretically it shouldn't happen. 
+    } else {
+        res.render('stories/edit', {
+          story,
+        })
+      }
+    } catch (err) {
+      console.error(err)
+      return res.render('error/500')
+    }
+  })
 
 module.exports = router
