@@ -45,6 +45,25 @@ router.get('/', ensureAuth, async (req, res) => {  //ensureAuth makes sure they 
     }
 })
 
+// @desc Show Single Story
+// @route GET /stories/:id
+router.get('/:id', ensureAuth, async (req, res) => {  
+  try{
+  let story =  await Story.findById(req.params.id)
+    .populate('user') // Grabbing user data - author and picture
+    .lean()
+    if (!story){
+      return res.render ('error/404')
+    }
+    res.render('story/show', {
+      story
+    })
+  } catch (err){
+    console.error(err)
+    res.render('error/404')
+  }
+})
+
 // @desc Show edit page
 // @route GET /stories/edit/:id
 //using findOne makes sure we find the one and get one result back
@@ -71,5 +90,48 @@ router.get('/edit/:id', ensureAuth, async (req, res) => {
       return res.render('error/500')
     }
   })
+
+
+
+
+// @desc Update Story
+// @route PUT /stories/:id
+router.put('/:id', ensureAuth, async (req, res) => {  
+  try {
+  let story = await Story.findById(req.params.id).lean() // Mongoose method to check for ids. 
+
+  if (!story){ // If there is not a story, return a 404 error. 
+    return res.render('error/404')
+  }
+  // Check Owner of the Story - should be logged in user's ID. If not it will redirect. 
+  if (story.user != req.user.id) {
+    res.redirect('/stories') 
+} else { // If it passess the checks, we're using another mongoose method to find the one story and to perform an update operation on it. 
+      story = await Story.findOneAndUpdate({_id: req.params.id}, req.body, { //Finding the story by the id and replacing the content of the body with the request.
+        new: true,  // For some reason if we try to update a story that doesn't exist it will create a new one.
+        runValidators: true // Running validation through the story schema again to make sure it follows all the rules we expect it to follow to make sure nothing malicious enters the database. 
+      })
+
+      res.redirect('/dashboard') // When we're done - go back to the dashboard. 
+  }
+  } catch (err){
+  console.log(errr)
+  res.render('error/500')
+}
+})
+
+// @desc Delete Story
+// @route DELETE /stories/add
+router.delete('/:id', ensureAuth, async (req, res) => {  
+
+  try{
+    await Story.remove({_id: req.params.id }) // .remove is another Mongoose Method. 
+    res.redirect('/dashboard') // Redirect to the dashboard when we are done. 
+  } catch (err) {
+    console.log(err)
+    return res.render('error/500')
+  }
+})
+
 
 module.exports = router

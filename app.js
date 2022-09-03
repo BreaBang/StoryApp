@@ -3,6 +3,7 @@ const express = require('express')
 const dotenv = require('dotenv')
 const morgan = require(`morgan`) //for login
 const exphbs = require('express-handlebars')
+const methodOverride = require('method-override') // to override our forms and allow them to use a PUT method. 
 const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo') //! unlike traversy Media - don't added session here. 
@@ -22,6 +23,18 @@ const app = express()
 // Body parser
 app.use(express.urlencoded({extended: false }))
 app.use(express.json())
+
+// Method Override Middleware - Intercepting the POST method from our form to swap it out with the method we want instead (PUT or DELETE)
+app.use(
+    methodOverride(function (req, res) {
+      if (req.body && typeof req.body === 'object' && '_method' in req.body) { // checking to see is there a body? is the body an object? And did you pass in an override? And if you did, it's going to do some stuff.
+        // look in urlencoded POST bodies and delete it
+        let method = req.body._method
+        delete req.body._method
+        return method
+      }
+    })
+  )
 
 
 // Logging
