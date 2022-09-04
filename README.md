@@ -15,7 +15,21 @@ I went through this tutiorial with a Twitch streamer known as Mayanwolfe. You ca
 Install <a href="https://nodejs.org/en/">node.js</a>
 npm init
 npm i express mongoose connect-mongo express-session express-handlebars dotenv method-override moment morgan passport passport-google-oauth20
-npm i -D nodemon cross-env 
+npm i -D nodemon cross-env
+
+### Usage
+Add your mongoDB URI and Google OAuth credentials to the config.env file
+
+Remember to add a .gitignore file and add your config.env and node_modules.
+
+Install dependencies
+npm install
+
+Run in development
+npm run dev
+
+Run in production
+npm start
 
 ## What I Would Change If I Had More Time
 
