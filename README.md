@@ -24,6 +24,19 @@ npm i -D nodemon cross-env
 <li>Run in production - enter "npm start" in the terminal command line.</li>
 </ul>
 
+## Lessons Learned:
+
+**MVC:**
+While building this app I learned a lot about MVC architecture structure and had the opportunity to see it in use first hand. We use Models, Views, Controlers and Routes to organize the code and keep things easy to understand and clean. I know in the future when I use this as a template to create something new, it will be easier to make changes without breaking everything. 
+
+**Handlebars and Materialze:**
+This was also my first time using Handlebars and Materialze. The Materialize framework was easy to work with and I am interest in seeing what else I can do with it. I've read Bootstrap has more users and is easier to troubleshoot because of that but have not had the opportunity to try it yet.
+
+Compared to my limited experience with EJS, I think Handlebars is a little easier to understand and I plan to try using it again in the future. 
+
+**Method-Override:**
+In this tutorial I leanred how to override forms to create PUT and DELETE requests using method-override. This is a useful way to get more out of forms. 
+
 ## What I Would Change If I Had More Time
 
 There are a few issues that need to be resolved and a few features I would like to add:
@@ -34,19 +47,5 @@ There are a few issues that need to be resolved and a few features I would like 
 <li>Image storage and the ability to add images.</li>
 <li>The ability to update your profile with additional information and to change the profile photo.</li>
 </ul>
-
-
-## Lessons Learned:
-
-**MVC**
-While building this app I learned a lot about MVC architecture structure and had the opportunity to see it in use first hand. We use Models, Views, Controlers and Routes to organize the code and keep things easy to understand and clean. I know in the future when I use this as a template to create something new, it will be easier to make changes without breaking everything. 
-
-**Handlebars and Materialze**
-This was also my first time using Handlebars and Materialze. The Materialize framework was easy to work with and I am interest in seeing what else I can do with it. I've read Bootstrap has more users and is easier to troubleshoot because of that but have not had the opportunity to try it yet.
-
-Compared to my limited experience with EJS, I think Handlebars is a little easier to understand and I plan to try using it again in the future. 
-
-**Method-Override**
-In this tutorial I leanred how to override forms to create PUT and DELETE requests using method-override. This is a useful way to get more out of forms. 
 
 
