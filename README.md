@@ -11,10 +11,12 @@ I coded along for this app with a tutorial by Brad Traversy. You can find his co
 I went through this tutiorial with a Twitch streamer known as Mayanwolfe. You can find her tutorial <a href="https://www.youtube.com/watch?v=p6nwq0JTau4&t=1s"> here</a>.
 
 **Required Dependencies**
-Install <a href="https://nodejs.org/en/">node.js</a>
-npm init
-npm i express mongoose connect-mongo express-session express-handlebars dotenv method-override moment morgan passport passport-google-oauth20
-npm i -D nodemon cross-env
+<ul>
+<li>Install <a href="https://nodejs.org/en/">node.js</a></li>
+<li>npm init</li>
+<li>npm i express mongoose connect-mongo express-session express-handlebars dotenv method-override moment morgan passport passport-google-oauth20</li>
+<li>npm i -D nodemon cross-env</li>
+ </ul>
 
 **Usage**
 <ul>
