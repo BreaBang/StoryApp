@@ -8,9 +8,14 @@ This web application allows users to login using their google account, to post, 
 ## How It's Made:
 
 **Tech used:** HTML, CSS, JavaScript, Handlebars, Node.js, Express, MongoDB, Mongoose, Materialze
+I coded along for this app with a tutorial by Brad Traversy. You can find his code <a href="https://github.com/bradtraversy/storybooks">here</a> a the video <a href="https://www.youtube.com/watch?v=SBvmnHTQIPY&t=535s">here</a>.
+I went through this tutiorial with a Twitch streamer known as Mayanwolfe. You can find her tutorial <a href="https://www.youtube.com/watch?v=p6nwq0JTau4&t=1s"> here</a>.
 
-This app was based on a tutorial by Brad Traversy. You can find his code <a href="">here</a> a the video <a href="">here</a>.
-I went through this tutiorial with a Twitch streamer known as Mayanwolfe. You can find here tutorial here</a>.
+### Required Dependencies
+Install <a href="https://nodejs.org/en/">node.js</a>
+npm init
+npm i express mongoose connect-mongo express-session express-handlebars dotenv method-override moment morgan passport passport-google-oauth20
+npm i -D nodemon cross-env 
 
 ## What I Would Change If I Had More Time
 
@@ -26,6 +31,6 @@ There are a few issues that need to be resolved and a few features I would like 
 
 ## Lessons Learned:
 
-While building this app I learned a lot about MVC architecture structure. This was also my first time using Handlebars and Materialze. 
+While building this app I learned a lot about MVC architecture structure. This was also my first time using Handlebars and Materialze. I also learned about method-override in this tutorial and how to override forms to create PUT and DELETE requests. 
 
 
