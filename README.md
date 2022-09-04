@@ -6,7 +6,6 @@ This web application allows users to login using their google account, to post, 
 ![alt tag](https://github.com/BreaBang/StoryApp/blob/main/StoryBooksGif.gif)
 
 ## How It's Made:
-
 **Tech used:** HTML, CSS, JavaScript, Handlebars, Node.js, Express, MongoDB, Mongoose, Materialze
 I coded along for this app with a tutorial by Brad Traversy. You can find his code <a href="https://github.com/bradtraversy/storybooks">here</a> a the video <a href="https://www.youtube.com/watch?v=SBvmnHTQIPY&t=535s">here</a>.
 I went through this tutiorial with a Twitch streamer known as Mayanwolfe. You can find her tutorial <a href="https://www.youtube.com/watch?v=p6nwq0JTau4&t=1s"> here</a>.
@@ -18,18 +17,12 @@ npm i express mongoose connect-mongo express-session express-handlebars dotenv m
 npm i -D nodemon cross-env
 
 ### Usage
-Add your mongoDB URI and Google OAuth credentials to the config.env file
-
-Remember to add a .gitignore file and add your config.env and node_modules.
-
-Install dependencies
-npm install
-
-Run in development
-npm run dev
-
-Run in production
-npm start
+<ul>
+<li>Add your mongoDB URI and Google OAuth credentials to the config.env file.</li>
+<li>Remember to add a .gitignore file and add your config.env and node_modules.</li>
+<li>Run in development - enter "npm run dev" in the terminal command line.</li>
+<li>Run in production - enter "npm start" in the terminal command line.</li>
+</ul>
 
 ## What I Would Change If I Had More Time
 
